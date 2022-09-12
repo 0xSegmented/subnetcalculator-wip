@@ -6,6 +6,7 @@ print(int_ip_list)
 if int_ip_list[0] >= 0 and int_ip_list[0] <= 126: # Half-Duplex CLASS A
     print("Class A")   # Subnet kiezen \/
     subnetA = int(input("Choose subnet: 8, 9, 10, 11, 12, 13, 14, 15\n"))
+    # 128 64 32 16 8 4 2 1
     if subnetA == 8:      
         print("255.0.0.0")
     elif subnetA == 9:
@@ -55,7 +56,18 @@ elif int_ip_list[0] >= 192 and int_ip_list[0] <= 223:
         st = "255.255.255.0"
         sp = st.split('.')
         xs = [int(x) for x in sp]
-        print(xs)
+        timeszero = 8
+        hosts = (2**timeszero)-2
+        network = (2**(32-subnetC))-2
+        print("Subnet: 255.255.255.0")
+        print(f"available hosts:{hosts}")
+        print(f"available network:{network}")
+        # showing the hosts and networks
+        # int_ip_list
+        count = -1 
+        while count <= network:
+            count +=1
+            print(f"{int_ip_list[0]}.{int_ip_list[1]}.{count}.1-254")
     elif subnetC == 25:
         st = "255.255.255.128"
         sp = st.split('.')
